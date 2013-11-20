@@ -1,0 +1,18 @@
+extends layout
+
+block body
+  h1 Home
+
+  p Login to gain access your <a href='/dashboard'>dashboard</a>.
+
+  p The current session is: #{session.user || "empty"} 
+
+  script(src='https://rawgithub.com/scottmotte/handshake-js/master/build/handshake.min.js', data-app_name='demo', data-root_url='https://handshakejs.herokuapp.com')
+  script.
+    handshake.script.addEventListener('handshake:login_confirm', function(e) {
+      console.log(e.data);
+      $.post("/login/success", {email: e.data.identity.email}, function(data) {
+        window.location.href = "/dashboard";
+      });
+    }, false);
+
