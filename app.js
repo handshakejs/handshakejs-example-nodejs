@@ -16,7 +16,7 @@ app.get('/logout', function(req, res) {
 });
 
 app.get('/dashboard', function(req, res) {
-  if (!req.session.user) {
+  if (!req.session || !req.session.user) {
     res.redirect('/');
   } else {
     res.render('dashboard.jade', {session: req.session});
