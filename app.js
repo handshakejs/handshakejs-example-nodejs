@@ -21,12 +21,6 @@ function authenticate(req, res, next) {
 }
 
 
-app.get('/test', authenticate, function(req, res) {
-  res.end('test')
-})
-
-
-
 app.get('/', authenticate, function(req, res) {
   res.render('index.jade', {session: req.session});
 });
