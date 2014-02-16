@@ -2,6 +2,8 @@
 
 Example of using [handshake-js](https://github.com/scottmotte/handshake-js) with a nodejs express app.
 
+You can view it in action [here](http://handshake-example-nodejs.herokuapp.com/).
+
 ## Usage
 
 ```bash
