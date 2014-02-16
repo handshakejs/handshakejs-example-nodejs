@@ -11,7 +11,7 @@ block body
   script.
     handshake.script.addEventListener('handshake:login_confirm', function(e) {
       console.log(e.data);
-      $.post("/login/success", {email: e.data.identity.email}, function(data) {
+      $.post("/login/success", {email: e.data.identity.email, hash: e.data.identity.hash}, function(data) {
         window.location.href = "/dashboard";
       });
     }, false);
