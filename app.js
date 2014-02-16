@@ -1,6 +1,11 @@
-var express = require('express');
-var app     = express();
-var PORT    = process.env.PORT || 3000; 
+var dotenv = require('dotenv');
+dotenv.load();
+
+var express     = require('express');
+var app         = express();
+var PORT        = process.env.PORT || 3000; 
+var SALT        = process.env.SALT || 'salt_required';
+var handshakejs = require('handshakejs')(SALT);
 
 app.use(express.bodyParser());
 app.use(express.cookieParser());
@@ -24,8 +29,13 @@ app.get('/dashboard', function(req, res) {
 });
 
 app.post('/login/success', function(req, res) {
-  req.session.user = req.body.email;
-  res.redirect('/dashboard');
+  handshakejs.validate({email: req.body.email, hash: req.body.hash}, function(err, resp) {
+    if (!err) { 
+      req.session.user = req.body.email;
+    }
+    res.redirect('/dashboard');
+  });
+
 });
 
 app.listen(PORT);
