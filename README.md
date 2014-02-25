@@ -8,7 +8,7 @@ You can view it in action [here](http://handshake-example-nodejs.herokuapp.com/)
 
 ```bash
 git clone https://github.com/handshakejs/handshakejs-example-nodejs.git
-cd handshake-example-nodejs
+cd handshakejs-example-nodejs
 echo "SALT=ddb5cf1ae20b5bb1a176dbb634f2031644f6365cf95accc637dd455acb9bbafb" > .env
 npm install 
 node app.js
