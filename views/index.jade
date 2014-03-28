@@ -7,7 +7,7 @@ block body
 
   p The current session is: #{session.user || "empty"} 
 
-  script(src='https://rawgithub.com/scottmotte/handshake-js/master/build/handshake.min.js', data-app_name='handshake-example-nodejs', data-root_url='https://handshakejs.herokuapp.com')
+  script(src='https://rawgithub.com/handshakejs/handshakejs-script/master/build/handshake.min.js', data-app_name='handshake-example-nodejs', data-root_url='https://handshakejs.herokuapp.com')
   script.
     handshake.script.addEventListener('handshake:login_confirm', function(e) {
       console.log(e.data);
